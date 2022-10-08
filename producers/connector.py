@@ -42,7 +42,7 @@ def configure_connector():
                 "incrementing.column.name": "stop_id",
                 "topic.prefix": "org.chicago.cta.",
                 "poll.interval.ms": "50000",
-                "tasks.max": 2,
+                "tasks.max": 1,
             }
         }),
     )
