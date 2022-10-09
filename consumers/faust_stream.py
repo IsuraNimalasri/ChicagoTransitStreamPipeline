@@ -79,6 +79,6 @@ async def transform_stations(stations):
         )
 
         await out_topic.send(key=station.station_name, value=transformed_station)
-
+        table[station.station_id] = transformed_station
 if __name__ == "__main__":
     app.main()
