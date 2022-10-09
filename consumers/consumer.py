@@ -46,7 +46,7 @@ class KafkaConsumer:
                 'bootstrap.servers': self.broker_properties['BROKER_URL'],
                 'group.id': self.topic_name_pattern,
                 'schema.registry.url': self.broker_properties['SCHEMA_REGISTRY'],
-                'auto.offset.reset': 'earliest'
+                'auto.offset.reset': 'latest'
             })
         else:
             self.consumer = Consumer({
