@@ -36,7 +36,7 @@ app = faust.App("stations-stream", broker="kafka://localhost:9092", store="memor
 topic = app.topic("org.chicago.cta.stations", value_type=Station)
 
 # Define the output Kafka Topic
-out_topic = app.topic("org.chicago.cta.stations.transformed",
+out_topic = app.topic("org.chicago.cta.stations.table.v1",
                       partitions=1,
                       key_type=str,
                       value_type=TransformedStation)
@@ -79,6 +79,7 @@ async def transform_stations(stations):
         )
 
         await out_topic.send(key=station.station_name, value=transformed_station)
+        table[station.station_id] = transformed_station
 
 if __name__ == "__main__":
     app.main()
